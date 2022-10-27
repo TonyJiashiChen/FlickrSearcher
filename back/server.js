@@ -9,10 +9,15 @@ const app = express();
 app.use(cors());
 app.use(json());
 
+const { parsed: config } = dotenv.config();
+
+const base_url = `https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${config.API_KEY}&tags=sky&format=json&nojsoncallback=1`;
+
 app.get("/flickrs", async (req, res) => {
-  return res.send({ messae: "hello!" });
+  const result = await axios.get(base_url, {});
+  return res.send(result.data);
 });
 
-const PORT = 7000;
+const PORT = 8099;
 
 app.listen(PORT, console.log(`server listening on port ${PORT}`));
