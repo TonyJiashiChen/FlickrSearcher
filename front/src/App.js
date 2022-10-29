@@ -4,17 +4,21 @@ import "./App.css";
 import LoginForm from "./component/LoginForm";
 
 const App = () => {
+  // storing user details locally
   const adminUser = {
     email: "admin@gmail.com",
     password: "admin",
   };
 
+  // state hook for details
   const [user, setUser] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
 
+  // state hook for images in a list
   const [imageList, setImageList] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
+  // simple login function, checks details returned from form
   const Login = (details) => {
     if (
       details.email == adminUser.email &&
@@ -29,6 +33,7 @@ const App = () => {
     }
   };
 
+  // effect hook to fetch json data sent from backend
   useEffect(() => {
     const fetch_data = async () => {
       const res = await getFlickr();
@@ -37,6 +42,7 @@ const App = () => {
     fetch_data();
   }, []);
 
+  // when sumbit send the search value to backend
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -44,6 +50,7 @@ const App = () => {
     setImageList(res.photos.photo);
   };
 
+  // when clear button clicked, call default image set
   const resetForm = async () => {
     const res = await getFlickr();
     setImageList(res.photos.photo);
@@ -59,7 +66,7 @@ const App = () => {
               value={searchValue}
               onChange={(event) => setSearchValue(event.target.value)}
               required="required"
-              placeholder="Please enter flickr tag..."
+              placeholder="Please enter Flickr tag..."
             ></input>
             <button type="submit">Search</button>
             <button type="button" onClick={resetForm}>
