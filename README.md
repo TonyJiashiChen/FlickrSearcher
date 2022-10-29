@@ -15,6 +15,9 @@ The Flickr searcher app is a simple web application where you can search Flickrs
 * In terminal `cd back`  to back folder, start backend server with `npm run server`
 * `cd front` to front folder, start front end web app with `npm start`
 
+## Trouble shooting
+If any modules missing when running the application, run `npm install` to install required modules
+
 ## Login
 Users can login using the following credentials
 
