@@ -11,12 +11,17 @@ form input{
   font-size: 33px;
 }
 
+form label{
+  font-size: xx-large;
+}
+
 form button {
   border: none;
   border-radius: 10px;
   font-size: 33px;
   padding: 16px;
 }
+
 
 form button[type="submit"] {
   background-color: burlywood;
